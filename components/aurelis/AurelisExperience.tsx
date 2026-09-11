@@ -685,8 +685,8 @@ export default function AurelisExperience() {
           <div className="page-grid manifesto-grid">
             <div className="manifesto-index eyebrow">{copy.manifesto.label} <span>—</span> 02</div>
             <p className="manifesto-copy">
-              {copy.manifesto.lineOne.map((word) => <span className="manifesto-word" key={word}>{word} </span>)}<br />
-              {copy.manifesto.lineTwo.map((word) => <span className="manifesto-word manifesto-word--faded" key={word}>{word} </span>)}
+              {copy.manifesto.lineOne.map((word, index) => <span className="manifesto-word" key={word}>{word}{language === "en" && index < copy.manifesto.lineOne.length - 1 ? " " : ""}</span>)}<br />
+              {copy.manifesto.lineTwo.map((word, index) => <span className="manifesto-word manifesto-word--faded" key={word}>{word}{language === "en" && index < copy.manifesto.lineTwo.length - 1 ? " " : ""}</span>)}
             </p>
             <div className="manifesto-foot">
               <span>{copy.manifesto.footOne}</span>
