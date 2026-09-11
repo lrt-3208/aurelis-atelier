@@ -6,7 +6,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
 import * as THREE from "three";
-import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { Fragment, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { aurelisCopy, type AurelisCopy, type AurelisLanguage } from "@/lib/aurelis-i18n";
 
 type R3FPointer = { x: number; y: number };
@@ -685,8 +685,8 @@ export default function AurelisExperience() {
           <div className="page-grid manifesto-grid">
             <div className="manifesto-index eyebrow">{copy.manifesto.label} <span>—</span> 02</div>
             <p className="manifesto-copy">
-              {copy.manifesto.lineOne.map((word, index) => <span className="manifesto-word" key={word}>{word}{language === "en" && index < copy.manifesto.lineOne.length - 1 ? " " : ""}</span>)}<br />
-              {copy.manifesto.lineTwo.map((word, index) => <span className="manifesto-word manifesto-word--faded" key={word}>{word}{language === "en" && index < copy.manifesto.lineTwo.length - 1 ? " " : ""}</span>)}
+              {copy.manifesto.lineOne.map((word, index) => <Fragment key={word + index}><span className="manifesto-word">{word}</span>{language === "en" && index < copy.manifesto.lineOne.length - 1 ? " " : null}</Fragment>)}<br />
+              {copy.manifesto.lineTwo.map((word, index) => <Fragment key={word + index}><span className="manifesto-word manifesto-word--faded">{word}</span>{language === "en" && index < copy.manifesto.lineTwo.length - 1 ? " " : null}</Fragment>)}
             </p>
             <div className="manifesto-foot">
               <span>{copy.manifesto.footOne}</span>
